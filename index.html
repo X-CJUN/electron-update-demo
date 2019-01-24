@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello Electron!</title>
+    </head>
+    <body>
+        <h1>Hello Electron!</h1>
+        <b id="version">vX.Y.Z</b><br>
+        We are using node <script>document.write(process.versions.node)</script>,
+        Chrome <script>document.write(process.versions.chrome)</script>,
+        and Electron <script>document.write(process.versions.electron)</script>.
+        <div id='message'></div>
+        <script>
+            let version = window.location.hash.substring(1);
+            document.getElementById('version').innerText = version;
+
+            const { ipcRenderer } = require('electron');
+            ipcRenderer.on('message', function(event, text) {
+                var container = document.getElementById('message');
+                var message = document.createElement('div')
+                message.innerHTML = text
+                container.appendChild(message)
+            })
+        </script>
+    </body>
+</html>

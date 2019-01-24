@@ -1,0 +1,37 @@
+{
+  "name": "electron-update-demo",
+  "version": "1.0.1",
+  "description": "A demo of usage of electron-builder on mac",
+  "main": "main.js",
+  "author": "Honye <hongye.jun@qq.com>",
+  "scripts": {
+    "start": "electron .",
+    "pack": "cross-env NODE_ENV=production electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "productName": "Electron Demo",
+    "appId": "cn.qingyangkeji.cabinet",
+    "copyright": "Copyright © 2019 ${author}. All rights resersed",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:5000/"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.business"
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "electron": "^4.0.1",
+    "electron-builder": "^20.38.4"
+  },
+  "dependencies": {
+    "electron-log": "^2.2.17",
+    "electron-updater": "^4.0.6"
+  }
+}

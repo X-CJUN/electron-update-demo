@@ -3,18 +3,75 @@
     <head>
         <meta charset="UTF-8">
         <title>Hello Electron!</title>
+        <style>
+            body {
+                font-family: PingFang SC;
+                margin: 0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            table {
+                border-left: 1px solid #ab7a10;
+                border-bottom: 1px solid #ab7a10;
+            }
+            table td {
+                border-top: 1px solid #ab7a10;
+                border-right: 1px solid #ab7a10;
+            }
+            table caption, .caption {
+                text-align: left;
+                margin-bottom: 10px;
+                font-weight: 500;
+            }
+            table td:nth-child(2n-1) {
+                text-align: center;
+                font-weight: 400;
+            }
+            table td:nth-child(2n) {
+                font-weight: 300;
+            }
+
+            .block {
+                background: #b5a491;
+                min-height: 200px;
+                max-height: 50vw;
+                overflow-y: scroll;
+                color: azure;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .space-top {
+                margin-top: 20px;
+            }
+        </style>
     </head>
     <body>
         <h1>Hello Electron!</h1>
-        <b id="version">vX.Y.Z</b><br>
-        We are using node <script>document.write(process.versions.node)</script>,
-        Chrome <script>document.write(process.versions.chrome)</script>,
-        and Electron <script>document.write(process.versions.electron)</script>.
-        <div id='message'></div>
+        <table summary='Applica Info' cellpadding='9' cellspacing='0'>
+            <caption>Application Info</caption>
+            <tr>
+                <td>APP</td>
+                <td id="version">vX.Y.Z</td>
+            </tr>
+            <tr>
+                <td>NodeJS</td>
+                <td><script>document.write(process.versions.node)</script></td>
+            </tr>
+            <tr>
+                <td>Chrome</td>
+                <td><script>document.write(process.versions.chrome)</script></td>
+            </tr>
+            <tr>
+                <td>Electron</td>
+                <td><script>document.write(process.versions.electron)</script></td>
+            </tr>
+        </table>
+
+        <div class="caption space-top">Logs</div>
+        <div class="block" id='message'></div>
         <script>
             let version = window.location.hash.substring(1);
             document.getElementById('version').innerText = version;
-
             const { ipcRenderer } = require('electron');
             ipcRenderer.on('message', function(event, text) {
                 var container = document.getElementById('message');

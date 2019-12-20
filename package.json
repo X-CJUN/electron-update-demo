@@ -6,7 +6,7 @@
   "author": "Honye <hongye.jun@qq.com>",
   "scripts": {
     "start": "electron .",
-    "pack": "cross-env NODE_ENV=production electron-builder --dir",
+    "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps"
   },
@@ -14,6 +14,9 @@
     "productName": "Electron Demo",
     "appId": "cn.qingyangkeji.cabinet",
     "copyright": "Copyright © 2019 ${author}. All rights resersed",
+    "releaseInfo": {
+      "releaseNotes": "1. 支持自动更新和手动更新\n2. https://github.com/honye"
+    },
     "publish": [
       {
         "provider": "generic",
@@ -26,7 +29,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "cross-env": "^5.2.0",
     "electron": "^4.0.1",
     "electron-builder": "^20.38.4"
   },
